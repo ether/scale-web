@@ -8,12 +8,54 @@
 
 <body>
 
-<p>This is my HTML5 Boilerplate.</p>
+<p>This page is designed to help you understand your hardware requirements for Deploying Etherpad at scale</p>
+
+<h1>Input</h1>
+<form>
+<p>
+<label for='a'>Concurrent Authors Per Pad:</label><input id='a' type='number' value=3>
+</p>
+<p>
+<label for='l'>Lurkers Per Pad:</label><input id='l' type='number' value=10>
+</p>
+<p>
+<label for='p'>Total Concurrent Pads:</label><input id='p' type='number' value=100>
+</p>
+</form>
+
+<div id=results>
+<h1>Results</h1>
+<p>
+Total CPU Cores(not CPUs) required: <span id=rcores></span>
+</p>
+<p>
+Total RAM per Cores(not CPUs) required: <span id=rram></span>
+</p>
+<p>
+Total Concurrent Authors: <span id=rtotalAuthors></span>
+</p>
+<p>
+Total Concurrent Lurkers: <span id=rtotalLurkers></span>
+</p>
+</div>
+
+<p>
+Total IP addresses required?
+</p>
+TODO: Advice for each thing..
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="./scale.js"></script>
 <script>
 $(document).ready(function() {
-  alert("powpow");
+  $("input").on("change", function(){
+    let results = calculateRequirements(parseInt($('#a').val()), parseInt($('#l').val()), parseInt($('#p').val()))
+console.log(results);
+    $.each(results, function(id, val){
+      console.log(id, val);
+      $("#r"+id).text(val);
+    });
+  }) 
 });
 </script>
 
