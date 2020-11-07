@@ -10,6 +10,16 @@
 
 <p>This page is designed to help you understand your hardware requirements for Deploying Etherpad at scale</p>
 
+<p>Note: The performance here is a rough guideline, we hope(not tested) over the coming months (by 2021) to have a roughly 5x improvement in performance land.</p>
+<p>Note: Stability can be improved by increasing memory heap size availability if memory availability runs low</p>
+<p>Note: Each etherpad instance/node can currently handle ~10k msgs/sec</p>
+<p>Note: We're yet to test if multiple instances play well on a single CPU (across multiple cores</p>
+<p>Note: IP addresses can be a limiting factor due to maximizing TCP connectivity per address</p>
+<p>Note: Productivity tends to drop with more than 3 concurrent authors on a pad - Details at https://github.com/ether/research-papers</p>
+<p>Note: We haven't tested Database performance with load across multiple nodes as of yet</p>
+
+
+
 <h1>Input</h1>
 <form>
 <p>
