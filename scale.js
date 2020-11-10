@@ -27,6 +27,9 @@ function calculateRequirements(a, l, p){
   // Total Lurkers
   let totalLurkers = 0;
 
+  // Total bandwidth
+  let bandwidth = 0;
+
   let i = 1;
   // for each pad
   while (i <= p){
@@ -43,6 +46,8 @@ function calculateRequirements(a, l, p){
     // add them up and we have our magic number :)
     let broadcasted = authormsgs + lurkermsgs;
 
+    bandwidth = bandwidth + broadcasted;
+
     // we can add this pad to the current core
     coreUsage = coreUsage + broadcasted;
 
@@ -55,11 +60,16 @@ function calculateRequirements(a, l, p){
     i++;
   }
 
+  ips = cores;
+  bandwidth = 2 * (bandwidth / 1000); // estimate
+
   return {
     cores: cores,
     ram: ramPerCore,
     totalAuthors: totalAuthors,
-    totalLurkers: totalLurkers
+    totalLurkers: totalLurkers,
+    ips: ips,
+    bandwidth: bandwidth
   }
 }
 
